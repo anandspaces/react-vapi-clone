@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaDiscord, FaLinkedin, FaXTwitter} from "react-icons/fa6";
+import { FaDiscord, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +14,7 @@ function Header() {
         <div className="text-2xl font-bold text-green-600 hover:cursor-pointer">
           VAPI
         </div>
-        
+
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-8">
           <div className="flex space-x-4 text-2xl">
@@ -34,13 +34,12 @@ function Header() {
 
         {/* Mobile Menu Button */}
         <div className="lg:hidden">
-          {/* <button onClick={toggleMenu}>
-            {isOpen ? (
-              {'|||'}
-            ) : (
-              
-            )}
-          </button> */}
+          <button
+            onClick={toggleMenu}
+            className="text-xl text-green-600 font-bold focus:outline-none"
+          >
+            {isOpen ? "Close" : "Menu"}
+          </button>
         </div>
       </nav>
 
