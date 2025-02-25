@@ -10,25 +10,24 @@ function Header() {
 
   return (
     <div className="fixed w-full z-50">
-      <nav className="flex justify-between items-center bg-white/30 backdrop-blur-lg text-gray-800 py-4 px-8 shadow-md">
-        <div className="text-2xl font-bold text-green-600 hover:cursor-pointer">
+      <nav className="flex justify-between items-center bg-white/40 backdrop-blur-lg text-gray-800 py-4 px-8 shadow-md border-b border-gray-200">
+        <div className="text-3xl font-bold text-green-600 hover:cursor-pointer hover:text-green-700 transition-colors duration-300">
           VAPI
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-8">
           <div className="flex space-x-4 text-2xl">
-            <FaDiscord className="hover:text-blue-500 cursor-pointer transition-colors duration-300" />
-            <FaXTwitter className="hover:text-blue-400 cursor-pointer transition-colors duration-300" />
-            <FaLinkedin className="hover:text-blue-600 cursor-pointer transition-colors duration-300" />
+            <FaDiscord className="text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300" />
+            <FaXTwitter className="text-gray-600 hover:text-blue-400 cursor-pointer transition-colors duration-300" />
+            <FaLinkedin className="text-gray-600 hover:text-blue-600 cursor-pointer transition-colors duration-300" />
           </div>
-          <div className="flex space-x-6 text-lg">
-            <a href="#" className="hover:text-black transition-colors duration-300">Careers</a>
-            <a href="#" className="hover:text-black transition-colors duration-300">Affiliates</a>
-            <a href="#" className="hover:text-black transition-colors duration-300">Docs</a>
-            <a href="#" className="hover:text-black transition-colors duration-300">Pricing</a>
-            <a href="#" className="hover:text-black transition-colors duration-300">Security</a>
-            <a href="#" className="hover:text-black transition-colors duration-300">Dashboard</a>
+          <div className="flex space-x-6 text-lg font-medium">
+            {["Careers", "Affiliates", "Docs", "Pricing", "Security", "Dashboard"].map((item) => (
+              <a href="#" className="text-gray-600 hover:text-green-600 transition-colors duration-300">
+                {item}
+              </a>
+            ))}
           </div>
         </div>
 
@@ -50,12 +49,11 @@ function Header() {
         }`}
       >
         <div className="flex flex-col space-y-6 p-8 text-lg">
-          <a href="#" className="hover:text-gray-600" onClick={toggleMenu}>Careers</a>
-          <a href="#" className="hover:text-gray-600" onClick={toggleMenu}>Affiliates</a>
-          <a href="#" className="hover:text-gray-600" onClick={toggleMenu}>Docs</a>
-          <a href="#" className="hover:text-gray-600" onClick={toggleMenu}>Pricing</a>
-          <a href="#" className="hover:text-gray-600" onClick={toggleMenu}>Security</a>
-          <a href="#" className="hover:text-gray-600" onClick={toggleMenu}>Dashboard</a>
+          {["Careers", "Affiliates", "Docs", "Pricing", "Security", "Dashboard"].map((item) => (
+            <a href="#" className="text-gray-600 hover:text-green-600 transition-colors duration-300" onClick={toggleMenu}>
+              {item}
+            </a>
+          ))}
           <div className="flex space-x-4 text-2xl mt-4">
             <FaDiscord className="hover:text-blue-500 cursor-pointer transition-colors duration-300" />
             <FaXTwitter className="hover:text-blue-400 cursor-pointer transition-colors duration-300" />
