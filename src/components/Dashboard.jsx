@@ -1,4 +1,4 @@
-import { MdMicNone } from "react-icons/md";
+import Mic from "./Mic";
 
 function Dashboard() {
   return (
@@ -12,11 +12,12 @@ function Dashboard() {
       </p>
 
       {/* Mic Icon */}
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <div className="rounded-full bg-gradient-to-r from-green-500 to-green-700 p-6 shadow-lg hover:scale-110 transition-transform duration-300">
           <MdMicNone className="text-white text-5xl" />
         </div>
-      </div>
+      </div> */}
+      <Mic />
 
       {/* Call to Action */}
       <h2 className="text-lg font-semibold text-green-600 rounded-3xl bg-green-100 px-6 py-3 shadow-md">
