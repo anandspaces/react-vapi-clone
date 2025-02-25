@@ -12,7 +12,7 @@ function Header() {
     <div className="fixed w-full z-50">
       <nav className="flex justify-between items-center bg-white/40 backdrop-blur-lg text-gray-800 py-4 px-8 shadow-md border-b border-gray-200">
         <div className="text-3xl font-bold text-green-600 hover:cursor-pointer hover:text-green-700 transition-colors duration-300">
-          VAPI
+          StrangeAI
         </div>
 
         {/* Desktop Menu */}

@@ -8,7 +8,7 @@ function Dashboard() {
         Voice AI for Developers
       </h1>
       <p className="text-gray-600 max-w-2xl text-lg">
-        Vapi lets developers build, test, and deploy voice agents in minutes rather than months.
+        StrangeAI lets developers build, test, and deploy voice agents in minutes rather than months.
       </p>
 
       {/* Mic Icon */}
