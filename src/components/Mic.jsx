@@ -16,26 +16,40 @@ function Mic({ setConversation }) {
     if (SpeechRecognition) {
       const recognitionInstance = new SpeechRecognition();
       recognitionInstance.lang = "en-US";
-      recognitionInstance.continuous = false;
+      recognitionInstance.continuous = true;
       recognitionInstance.interimResults = false;
+
       recognitionInstance.onresult = async (event) => {
-        const transcript = event.results[0][0].transcript;
+        const transcript = event.results[event.results.length - 1][0].transcript;
         setConversation((prev) => [...prev, { type: "user", text: transcript }]);
+        
+        // AI Acknowledges Processing
+        speakText("Let me process it...");
+        
+        // Send to Backend and Get Response
         const responseText = await processVoice(transcript);
+        
+        // AI Responds
         speakText(responseText);
       };
+
       setRecognition(recognitionInstance);
     } else {
       alert("Speech Recognition is not supported in this browser.");
     }
   };
 
-  const startRecording = () => {
+  const startConversation = async () => {
     setIsRecording(true);
+    
+    // Greeting and Prompt to Speak
+    speakText("Hello! How can I help you today? Please say something.");
+    
+    // Start Recording
     recognition.start();
   };
 
-  const stopRecording = () => {
+  const stopConversation = () => {
     setIsRecording(false);
     recognition.stop();
   };
@@ -43,16 +57,12 @@ function Mic({ setConversation }) {
   const processVoice = async (userText) => {
     // Dummy Responses
     const dummyResponses = [
-      "Hello! How can I help you today?",
-      "That's interesting! Tell me more.",
-      "I am just a chatbot, but I understand you.",
-      "Can you explain that differently?",
-      "I see. Let's continue our conversation.",
-      "That's a good question. Let me think...",
-      "I'm here to chat with you anytime!",
-      "Can you elaborate on that?",
-      "Oh, really? That's fascinating!",
-      "I enjoy our conversation. Let's continue."
+      "Sure, let me help you with that.",
+      "That's interesting! Let me think about it.",
+      "I see. I'll get the answer for you.",
+      "Alright, processing your request...",
+      "Good question! Let me check that for you.",
+      "I'm on it. Just a moment...",
     ];
 
     // Randomly select a dummy response
@@ -85,7 +95,9 @@ function Mic({ setConversation }) {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "en-US";
     utterance.onend = () => {
-      startRecording();
+      if (isRecording) {
+        recognition.start();
+      }
     };
     synth.speak(utterance);
   };
@@ -97,7 +109,7 @@ function Mic({ setConversation }) {
           ? "bg-red-500 hover:scale-110"
           : "bg-green-600 hover:scale-105"
       }`}
-      onClick={isRecording ? stopRecording : startRecording}
+      onClick={isRecording ? stopConversation : startConversation}
     >
       <MdMicNone className="text-white text-5xl" />
     </button>
